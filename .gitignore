@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+
+# Swift
+.build/
+DerivedData/
+xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+
+# Node
+node_modules/
+dist/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
