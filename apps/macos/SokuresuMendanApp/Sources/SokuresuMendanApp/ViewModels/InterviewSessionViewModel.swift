@@ -27,7 +27,7 @@ final class InterviewSessionViewModel: ObservableObject {
         finalizedQuestion: ""
     )
     @Published var stageOutput = StageOutput(
-        stage0Template: "- 質問を検出するとここに即時テンプレが表示されます\n- Stage1は10秒回答を最速で生成します\n- Stage2は後追いで30秒版を追記します"
+        stage0Template: "- 質問を検出するとここに即時テンプレが表示されます\n- Stage1は即答向けの短い回答を最速で生成します\n- Stage2は後追いで詳細版を追記します"
     )
     @Published var stage1StreamingPreview = ""
     @Published var stage2StreamingPreview = ""
