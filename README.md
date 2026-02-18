@@ -16,7 +16,7 @@ SokuresuMendan is a local-first macOS MVP for live interview assistance.
 1. Start proxy
 
 ```bash
-cd /Users/tachibanayuuki/Documents/SokuresuMendan/services/local-proxy
+cd services/local-proxy
 cp .env.example .env
 # set OPENAI_API_KEY
 npm install
@@ -26,7 +26,7 @@ npm run dev
 2. Run macOS app
 
 ```bash
-cd /Users/tachibanayuuki/Documents/SokuresuMendan/apps/macos/SokuresuMendanApp
+cd apps/macos/SokuresuMendanApp
 swift run
 ```
 

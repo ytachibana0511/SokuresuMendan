@@ -26,7 +26,7 @@ SokuresuMendan は、**面談中に質問を検出し、回答案を最速で提
 ### 3-1. ローカルプロキシ起動
 
 ```bash
-cd /Users/tachibanayuuki/Documents/SokuresuMendan/services/local-proxy
+cd services/local-proxy
 cp .env.example .env
 # .env の OPENAI_API_KEY にキーを設定
 npm install
@@ -42,7 +42,7 @@ curl http://127.0.0.1:39871/health
 ### 3-2. macOSアプリ起動
 
 ```bash
-cd /Users/tachibanayuuki/Documents/SokuresuMendan/apps/macos/SokuresuMendanApp
+cd apps/macos/SokuresuMendanApp
 swift run
 ```
 
@@ -135,7 +135,7 @@ brew install blackhole-2ch
 ### macOSアプリ
 
 ```bash
-cd /Users/tachibanayuuki/Documents/SokuresuMendan/apps/macos/SokuresuMendanApp
+cd apps/macos/SokuresuMendanApp
 swift test
 ```
 
@@ -145,7 +145,7 @@ swift test
 ### ローカルプロキシ
 
 ```bash
-cd /Users/tachibanayuuki/Documents/SokuresuMendan/services/local-proxy
+cd services/local-proxy
 npm run check
 npm run build
 ```
