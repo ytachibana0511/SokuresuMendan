@@ -32,11 +32,19 @@ swift run
 
 3. Open Test Mode and verify Stage 0 -> Stage 1 -> Stage 2 flow.
 
+4. If you want to capture system audio (YouTube/Zoom/Teams), install BlackHole first:
+
+```bash
+brew install blackhole-2ch
+```
+
+Then configure Multi-Output Device (BlackHole + headphones). See [macOS audio setup](./docs/SETUP_MACOS_AUDIO.md).
+
 ## Speed strategy
 
 - Stage 0: instant local template from delta-based question detection
 - Stage 1: short 10-second answer streamed first
-- Stage 2: async 30-second answer + 3 follow-up Q&A
+- Stage 2: async continuation appended after Stage 1
 
 ## Privacy and legal notice
 

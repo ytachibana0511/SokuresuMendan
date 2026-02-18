@@ -12,6 +12,8 @@ struct DashboardView: View {
     private let historyHeightRange: ClosedRange<CGFloat> = 140...460
     private let answerReadableWidth: CGFloat = 640
     private let answerSoftWrapChars = 24
+    private let questionOutputFont: Font = .system(size: 21, weight: .semibold, design: .rounded)
+    private let answerOutputFont: Font = .system(size: 21, weight: .medium, design: .rounded)
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -161,6 +163,7 @@ struct DashboardView: View {
                                 .font(.subheadline)
                                 .bold()
                             Text(viewModel.quickAnswerText.stealthWrapped(maxCharactersPerLine: answerSoftWrapChars))
+                                .font(answerOutputFont)
                                 .lineSpacing(4)
                                 .fixedSize(horizontal: false, vertical: true)
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -184,6 +187,7 @@ struct DashboardView: View {
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                                 Text(extended.stealthWrapped(maxCharactersPerLine: answerSoftWrapChars))
+                                    .font(answerOutputFont)
                                     .lineSpacing(4)
                                     .fixedSize(horizontal: false, vertical: true)
                                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -240,8 +244,18 @@ struct DashboardView: View {
 
     private var compactTranscriptSection: some View {
         VStack(alignment: .leading, spacing: 6) {
-            compactTranscriptCard(title: "文字起こしライブ", text: viewModel.transcript.liveTranscript)
-            compactTranscriptCard(title: "質問（暫定/確定）", text: viewModel.transcript.finalizedQuestion.ifEmpty(viewModel.transcript.provisionalQuestion.ifEmpty("-")))
+            compactTranscriptCard(
+                title: "文字起こしライブ",
+                text: viewModel.transcript.liveTranscript,
+                textFont: .system(size: 17, weight: .regular, design: .rounded),
+                maxLines: 2
+            )
+            compactTranscriptCard(
+                title: "質問（暫定/確定）",
+                text: viewModel.transcript.finalizedQuestion.ifEmpty(viewModel.transcript.provisionalQuestion.ifEmpty("-")),
+                textFont: questionOutputFont,
+                maxLines: 3
+            )
         }
     }
 
@@ -388,13 +402,14 @@ struct DashboardView: View {
         .background(.quaternary.opacity(0.2), in: RoundedRectangle(cornerRadius: 8))
     }
 
-    private func compactTranscriptCard(title: String, text: String) -> some View {
+    private func compactTranscriptCard(title: String, text: String, textFont: Font, maxLines: Int) -> some View {
         VStack(alignment: .leading, spacing: 2) {
             Text(title)
                 .font(.caption2)
                 .foregroundStyle(.secondary)
             Text(text.ifEmpty("-"))
-                .lineLimit(2)
+                .font(textFont)
+                .lineLimit(maxLines)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
         .padding(8)
